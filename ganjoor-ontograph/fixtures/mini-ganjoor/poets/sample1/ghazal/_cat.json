@@ -1,0 +1,14 @@
+{
+  "Id": 9001,
+  "PoetId": 9001,
+  "Title": "غزلیات آزمایشی",
+  "Path": "/sample1/ghazal",
+  "ChildCategories": [],
+  "Poems": [
+    9101,
+    9102,
+    9103,
+    9104,
+    9105
+  ]
+}

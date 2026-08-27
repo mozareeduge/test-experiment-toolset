@@ -1,0 +1,68 @@
+{
+  "SchemaVersion": 1,
+  "GeneratedAtUtc": "2026-08-27T00:00:00Z",
+  "PoetsCount": 3,
+  "PoemsCount": 15,
+  "IdIndexShardSize": 2000,
+  "UrlTemplates": {
+    "Poet": "poets/{poetSlug}/poet.json",
+    "Category": "poets/{poetSlug}/{catPath}/_cat.json",
+    "Poem": "poets/{poetSlug}/{catPath}/{poemSlug}.json"
+  },
+  "Poets": [
+    {
+      "Id": 9001,
+      "Nickname": "آزمایشی۱",
+      "FullUrl": "/sample1"
+    },
+    {
+      "Id": 9002,
+      "Nickname": "آزمایشی۲",
+      "FullUrl": "/sample2"
+    },
+    {
+      "Id": 9003,
+      "Nickname": "آزمایشی۳",
+      "FullUrl": "/sample3"
+    }
+  ],
+  "_fixture_ground_truth": {
+    "note": "Computed by hand, verse-by-verse, from the poems above (each verse counted at most once per anchor; see the PlainText-derivation comment on section() for why PlainText must not be counted separately from Verses). The engine's own results must match these exactly on this fixture, or the fixture/engine disagreement is a bug to root-cause, not a fixture to quietly edit.",
+    "eligible_poems_total": 15,
+    "mirror_anchor_hits_total": 6,
+    "mirror_anchor_hits_by_form": {
+      "آینه": 5,
+      "آیینه": 1
+    },
+    "rust_anchor_hits_total": 3,
+    "poems_with_mirror": [
+      9101,
+      9102,
+      9103,
+      9104,
+      9105,
+      9201
+    ],
+    "poems_with_rust": [
+      9101,
+      9102,
+      9201
+    ],
+    "mirror_prevalence_poem_scale": "6/15",
+    "poem_scale_mirror_rust_coincidence": [
+      "9101",
+      "9102",
+      "9201"
+    ],
+    "couplet_scale_mirror_rust_coincidence": [
+      "9101 couplet 0 (mirror in Right, rust in Left of the same couplet)",
+      "9201 couplet 0 (mirror and rust both in the Right hemistich)"
+    ],
+    "couplet_scale_broad_only_case": "9102 (mirror in couplet 0, rust in couplet 2 -- same poem, never the same couplet)",
+    "ablation_remove_sample1_poet_scale_retention": "1/3 poems remain (9201 only)",
+    "ablation_remove_sample1_couplet_scale_retention": "1/2 couplet-scale cases remain (9201 only)",
+    "ambiguous_occurrence_assessment_case": "poem 9105 (figurative 'mirror of the heart')",
+    "anchor_normalization_case": "poem 9104 (آیینه spelling variant, no rust present)",
+    "zero_incidence_control_poet": "sample3 (all 5 poems, 0 mirror, 0 rust)"
+  }
+}

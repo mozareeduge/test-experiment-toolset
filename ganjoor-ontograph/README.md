@@ -10,9 +10,21 @@ Claude Code skill scaffold for implementing it.
 - `EVALUATION.md` — the review that produced v2.3.0: a verified factual
   correction, real gaps closed, and the new Claude Code runtime binding
   (Part XIII of the spec).
-- `../.claude/skills/persian-poetry-ontograph/` — the skill scaffold named in
-  the spec's Part XIII. It is a scaffold, not a working implementation: the
-  Python engine and CLI it shells out to (spec §59, §62) are not built yet.
+- `USER_JOURNEY.md` — the concrete experience flow: how a research session
+  actually starts, branches, and ends, with real example outputs at every
+  step. This is the UX target the build plan below is built against.
+- `fixtures/mini-ganjoor/` — a small, schema-accurate, hand-verified
+  synthetic corpus with known ground truth, used by every automated test
+  so the build never depends on cloning the real multi-GB corpora.
+- `implementation/` — the actual build package: `BUILD_PLAN.md` (phases,
+  rationale, engineering defaults), `IMPLEMENTATION_LEDGER.md` (the exact
+  task-by-task backlog), and `HOW_TO_RUN.md` (how to kick off the build
+  loop from a fresh Claude Code session).
+- `../.claude/skills/persian-poetry-ontograph/` — the researcher-facing
+  skill scaffold named in the spec's Part XIII (uses the finished engine).
+- `../.claude/skills/ontograph-build/` — the build-loop skill (builds the
+  engine in the first place). Different audience, different job: one is
+  for using the apparatus, the other is for finishing it.
 
 This directory landed in this repository because it was the designated
 target repo for this task. If this repository is a generic scratch/toolset
