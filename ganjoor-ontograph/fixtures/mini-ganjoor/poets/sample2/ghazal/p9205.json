@@ -7,7 +7,7 @@
   "RhymeLetters": "ها",
   "SourceName": "mini-ganjoor-fixture",
   "SourceUrlSlug": "fixture",
-  "PoemSummary": "Unrelated filler poem (control unit for the denominator).",
+  "PoemSummary": "Unrelated filler poem (control unit for the denominator). Deliberately kept free of HEART/دل — see the note on 9105 about not letting the second fixture object leak into unrelated filler poems by accident.",
   "Metre": {
     "Id": 1,
     "Rhythm": "فعولن فعولن فعولن فعل (fixture metre)"
@@ -19,8 +19,8 @@
       "SectionType": "WholePoem",
       "VerseType": "First",
       "RhymeLetters": "ها",
-      "PlainText": "شمع فروزان تا سحر / قصه‌ی دل با کس نگفت",
-      "HtmlText": "<div class='b'>شمع فروزان تا سحر / قصه‌ی دل با کس نگفت</div>",
+      "PlainText": "شمع فروزان تا سحر / قصه‌ای با کس نگفت",
+      "HtmlText": "<div class='b'>شمع فروزان تا سحر / قصه‌ای با کس نگفت</div>",
       "PoemFormat": "Ghazal",
       "CoupletsCount": 1
     }
@@ -36,7 +36,7 @@
     {
       "VOrder": 2,
       "Position": "Left",
-      "Text": "قصه‌ی دل با کس نگفت",
+      "Text": "قصه‌ای با کس نگفت",
       "CoupletIndex": 0,
       "SectionIndex1": 0
     }

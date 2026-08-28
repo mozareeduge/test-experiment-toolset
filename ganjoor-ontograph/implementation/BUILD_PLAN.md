@@ -119,6 +119,21 @@ that point the correct status (per spec §69's own words) changes from
 corpus, real-corpus integration pending" — not "finished," since Phase 8 and
 the v0.2 reflexive relation layer (§72) remain.
 
+**"Gates passed" must mean what it says.** An independent external review
+(`../EXTERNAL_REVIEW.md`) found that the original fixture let a gate report
+green while proving nothing: co-incidence/scale/ablation tests (P3.3, P3.6,
+P3.8) had identical targets whether the engine correctly used assessed
+occurrences or silently fell back to raw anchors, and the estimator gate
+(P7.5/§70) was tested only at a tautological 100% sampling fraction. The
+fixture and ledger have since been reworked (a divergence case, a
+substring/token-boundary trap, a larger estimator-testable object, a
+periodic Appendix A invariant audit — P3.9, re-run at P7.4) specifically so
+that a cheating implementation cannot pass Phase 7 green. If a future
+change to the fixture or ledger ever makes anchor-level and assessed-level
+targets identical again, or makes the estimator gate testable only at
+100% sampling, that change has silently undone this fix and should be
+treated as a regression, not a simplification.
+
 ## What this plan deliberately does not include
 
 Per spec §73–74: no matrix decomposition/latent-factor views, no

@@ -7,7 +7,7 @@
   "RhymeLetters": "ها",
   "SourceName": "mini-ganjoor-fixture",
   "SourceUrlSlug": "fixture",
-  "PoemSummary": "Control poem, no anchors present, poet 3 has zero incidence.",
+  "PoemSummary": "Control poem, no anchors present (mirror, rust, or HEART), poet 3 has zero incidence of every tracked object.",
   "Metre": {
     "Id": 1,
     "Rhythm": "فعولن فعولن فعولن فعل (fixture metre)"
@@ -19,8 +19,8 @@
       "SectionType": "WholePoem",
       "VerseType": "First",
       "RhymeLetters": "ها",
-      "PlainText": "ستاره‌ای بر آسمان شب / بی هیچ نشانی از این دو یافت نمی‌شود",
-      "HtmlText": "<div class='b'>ستاره‌ای بر آسمان شب / بی هیچ نشانی از این دو یافت نمی‌شود</div>",
+      "PlainText": "ستاره‌ای بر آسمان شب / بی هیچ نشانی از این‌ها یافت نمی‌شود",
+      "HtmlText": "<div class='b'>ستاره‌ای بر آسمان شب / بی هیچ نشانی از این‌ها یافت نمی‌شود</div>",
       "PoemFormat": "Ghazal",
       "CoupletsCount": 1
     }
@@ -36,7 +36,7 @@
     {
       "VOrder": 2,
       "Position": "Left",
-      "Text": "بی هیچ نشانی از این دو یافت نمی‌شود",
+      "Text": "بی هیچ نشانی از این‌ها یافت نمی‌شود",
       "CoupletIndex": 0,
       "SectionIndex1": 0
     }

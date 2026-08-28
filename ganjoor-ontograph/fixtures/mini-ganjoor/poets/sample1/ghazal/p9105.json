@@ -7,7 +7,7 @@
   "RhymeLetters": "ها",
   "SourceName": "mini-ganjoor-fixture",
   "SourceUrlSlug": "fixture",
-  "PoemSummary": "Figurative/ambiguous case: 'mirror of the heart', not a literal object — intended calibration test for the ambiguous Occurrence Assessment.",
+  "PoemSummary": "Figurative/ambiguous case: 'mirror of the heart', not a literal object — intended calibration test for the ambiguous Occurrence Assessment. Also contributes one incidental HEART hit (see the HEART ground truth note).",
   "Metre": {
     "Id": 1,
     "Rhythm": "فعولن فعولن فعولن فعل (fixture metre)"
