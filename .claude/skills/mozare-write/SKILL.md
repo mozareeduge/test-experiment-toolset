@@ -5,6 +5,18 @@ description: Draft, continue, or revise Mohammad Zare's own writing (proposals, 
 
 # Mozare Write
 
+This skill installs the same way whether it's a user-level install
+(`~/.claude/skills/mozare-write/` — available in every project, the common
+case) or a project-level one vendored inside one repo's own
+`.claude/skills/mozare-write/`. Every bare filename below (`protocol.md`,
+`banned-hard.txt`, `banned-review.txt`, `structural-tells.md`,
+`voice-patterns.md`) names a file in that same directory, wherever it
+actually is — not a path relative to whatever directory the current task
+happens to be in. If it's ever unclear where that is, locate it once with
+`find ~ -maxdepth 6 -path '*/skills/mozare-write/protocol.md' 2>/dev/null`
+(or the repo-vendored equivalent) and use that directory for every
+reference below, including the mechanical-check commands.
+
 Read `protocol.md` in this skill folder before a substantial task — it's a
 condensed, portable copy of mozare-wiki's canonical Adaptive Writing
 Protocol and Writing and Export Discipline objects. **When mozare-wiki is
@@ -134,13 +146,12 @@ whole harness exists to avoid.
 
 ## Mechanical check (run it, don't just remember it)
 
-Two files, two different meanings — both live in this skill folder, so run
-from the repository root (a bare filename resolves only from inside the
-skill folder itself, which is not where you're usually working):
+Two files, two different meanings, both in this skill's own directory (see
+the resolution note above):
 
 ```
-rg -i -f .claude/skills/mozare-write/banned-hard.txt path/to/draft.md
-rg -i -f .claude/skills/mozare-write/banned-review.txt path/to/draft.md
+rg -i -f <this skill's directory>/banned-hard.txt path/to/draft.md
+rg -i -f <this skill's directory>/banned-review.txt path/to/draft.md
 ```
 
 `banned-hard.txt` — always replace with something exact and concrete; never
