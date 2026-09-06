@@ -22,26 +22,40 @@ absorbing it — that framing is exactly what your isolation from the drafting
 pass exists to prevent, and it comes from a channel your isolation doesn't
 cover.
 
+## Where these files actually are
+
+This agent reads the `mozare-write` skill's own files, which live in that
+skill's directory, not this agent's — the two are siblings (typically
+`~/.claude/agents/mozare-critic.md` next to `~/.claude/skills/mozare-write/`
+for a user-level install, or the same shape under one repo's own
+`.claude/` for a project-level install). Every bare filename below
+(`protocol.md`, `banned-hard.txt`, `banned-review.txt`,
+`structural-tells.md`, `voice-patterns.md`) refers to that directory. If
+it's unclear where that is, locate it once with
+`find ~ -maxdepth 6 -path '*/skills/mozare-write/protocol.md' 2>/dev/null`
+(or the repo-vendored equivalent) and use that directory for every
+reference below, including the mechanical-check commands in step 2.
+
 ## What you're checking the draft against
 
 Read these before judging, don't rely on memory of them:
 
-- `.claude/skills/mozare-write/protocol.md` — the compositional method
+- `protocol.md` — the compositional method
   (material → concept → mechanism → method → stake; positive
   characterization before contrast; genre control). If mozare-wiki's own
   `03-objects/methods/adaptive-writing-protocol.md` and
   `writing-and-export-discipline.md` are reachable, read those instead —
   they're the living standard this file is a snapshot of.
-- `.claude/skills/mozare-write/banned-hard.txt` (always-replace strings) and
-  `.claude/skills/mozare-write/banned-review.txt` (judgment-call strings —
+- `banned-hard.txt` (always-replace strings) and
+  `banned-review.txt` (judgment-call strings —
   a hit is a prompt to read the sentence, not an automatic flaw) and
-  `.claude/skills/mozare-write/structural-tells.md` — the mechanical and
+  `structural-tells.md` — the mechanical and
   structural checks, including the self-reference escape hatch (don't flag
   quoted or attributed material), the editor-constraints list (what a
   rewrite may never add — relevant when you're diagnosing a revision), and
   the "Open questions" section (do not apply a threshold that isn't written
   down there, even if it seems obviously right — see step 4 below).
-- `.claude/skills/mozare-write/voice-patterns.md` — concrete precedent for
+- `voice-patterns.md` — concrete precedent for
   what "carries Mohammad's writing intelligence" looks like. **This file
   matters as much as the prohibitions and must actually be read**, not
   skipped in favor of the negative checks — its exemplars are the intended
@@ -61,8 +75,8 @@ Read these before judging, don't rely on memory of them:
 1. Read the draft in full before forming any judgment.
 2. Run the mechanical check yourself — don't take it on faith that it ran:
    ```
-   rg -i -f .claude/skills/mozare-write/banned-hard.txt <draft path>
-   rg -i -f .claude/skills/mozare-write/banned-review.txt <draft path>
+   rg -i -f <mozare-write skill directory>/banned-hard.txt <draft path>
+   rg -i -f <mozare-write skill directory>/banned-review.txt <draft path>
    ```
    List every literal hit from each file separately, and label which list it
    came from — a `banned-hard.txt` hit needs replacement; a

@@ -18,21 +18,46 @@ See `research/` for the full build history:
 - `opus5-harness-review.md` — an independent adversarial review, 14 findings
 - `negative-control-test.md` — validation against Mohammad's own real prose
 
-### Using it locally with Claude Code
+### Using it everywhere (recommended) — user-level install
 
-No install step — Claude Code auto-discovers project-level skills and
-agents from `.claude/skills/` and `.claude/agents/` in whatever repo it's
-run from. To use this harness:
+Claude Code discovers skills and agents from `~/.claude/skills/` and
+`~/.claude/agents/` in *every* project, not just one repo. Install it once
+and it's available in any Claude Code session on this machine, in any
+directory:
 
 ```
-git clone https://github.com/mozareeduge/test-experiment-toolset
-cd test-experiment-toolset
-claude
+git clone https://github.com/mozareeduge/test-experiment-toolset /tmp/mozare-harness
+mkdir -p ~/.claude/skills ~/.claude/agents
+cp -r /tmp/mozare-harness/.claude/skills/mozare-write ~/.claude/skills/
+cp -r /tmp/mozare-harness/.claude/skills/mozare-finalize ~/.claude/skills/
+cp /tmp/mozare-harness/.claude/agents/mozare-critic.md ~/.claude/agents/
+rm -rf /tmp/mozare-harness
 ```
 
-Then just ask for writing help naturally — `mozare-write` triggers
-automatically on drafting/revising/continuing requests. Two things are
-manually invoked on purpose, because they have side effects:
+Every internal reference in these files is written to resolve relative to
+wherever the `mozare-write` skill directory actually ends up (user-level or
+project-level) — see the "Where these files actually are" note at the top
+of each file. Nothing hardcodes this repo's path.
+
+This repo stays the maintained, version-controlled *source* for the
+harness — when it changes here, re-run the four commands above to update
+your local copy. There's no update-in-place mechanism yet; re-copying is
+the update path.
+
+### Using it project-scoped instead
+
+Claude Code also auto-discovers project-level skills/agents from
+`.claude/skills/` and `.claude/agents/` in whatever repo it's run from, so
+cloning this repo and running `claude` from inside it works too, without
+copying anything — useful for testing changes here before they reach the
+user-level copy above.
+
+### Invoking it, either way
+
+Just ask for writing help naturally — `mozare-write` triggers automatically
+on drafting/revising/continuing requests, regardless of which project
+you're in. Two things are manually invoked on purpose, because they have
+side effects:
 
 - **`mozare-critic`** — ask explicitly: "run the mozare-critic agent on
   this draft." It's a fresh, isolated read with no memory of writing the
@@ -40,9 +65,12 @@ manually invoked on purpose, because they have side effects:
   it's diagnosing.
 - **`/mozare-finalize <path>`** — the export gate before anything actually
   ships. Run it as a slash command once a draft is ready to clear for
-  sending; it writes a cleared copy to `_exports/` (git-ignored — personal
-  delivery copies, not repo content) and a proof-of-check record to
-  `_audits/` (committed).
+  sending. If invoked inside a git repo, it writes a cleared copy to that
+  repo's `_exports/` (git-ignored) and a proof-of-check record to its
+  `_audits/` (committed) — matching mozare-wiki's own convention. Invoked
+  from an arbitrary folder with no enclosing repo, it falls back to
+  `~/.claude/mozare-finalize/exports/` and `~/.claude/mozare-finalize/audits/`
+  instead.
 
 If `mozare-wiki` is also cloned and reachable, the harness prefers reading
 its live canonical protocol objects over its own bundled snapshot
