@@ -1,6 +1,6 @@
 # Structural tells (beyond the word list)
 
-`banned-patterns.txt` catches vocabulary. It can't catch a draft that uses
+`banned-hard.txt` and `banned-review.txt` catch vocabulary. They can't catch a draft that uses
 zero banned words and still reads as generated, because the tell is in the
 *shape* of the prose. These need a second look at the whole draft, not a
 line-by-line grep — that's why they're split out from the mechanical check.
@@ -43,6 +43,25 @@ guidance, not a hard-coded rule Mozare's protocol never asked for. The
 technique — write the counts down, judge the list — is the actual find, not
 any single number.
 
+**Genre-scope the spread requirement — don't apply it everywhere.** The
+numbers above come from tools calibrated on blog and personal-essay prose.
+`protocol.md`'s own style calibration says prose should be "dense when the
+material demands it" and that "long sentences are fine when each one
+moves" — a methodology section, theoretical section, or technical appendix
+built from long accumulating sentences is doing exactly that, not failing
+this check. For those genres, use the count list only to catch genuine
+**monotony** — three consecutive sentences within ~5 words of each other —
+and don't apply the 8-word-minimum / 25-word-spread requirement, which
+pulls toward blog rhythm. For narrative, letter, and artist-statement
+genres, the full spread check applies.
+
+**Genre-scope "thesis-first opener" the same way** (below, under P1): a
+research pre-proposal is *required by its own genre entry* to lead with the
+research object and problem — that is not the tell this pattern names. Only
+flag a thesis-first opener in narrative, letter, and artist-statement
+genres, where leading with the frame instead of the material really is
+generic.
+
 ## Editor constraints — what a rewrite may never *add*
 
 These are constraints on the pass doing the rewriting, not detections on the
@@ -72,6 +91,16 @@ it, even when the result reads clean:
   concrete-sounding detail always reads better than a vague one, and it is
   worse than the vague phrasing it replaced. If a concrete detail is
   missing, flag the gap or use `[VERIFY]` — never fabricate one to fill it.
+- **Performed candor** — "let's be honest," "here's the thing," "real talk,"
+  "in the interest of full disclosure" (unless it's an actual conflict-of-
+  interest disclosure, which is legitimate and should stay) — announcing
+  transparency instead of just being transparent. If the frame can be
+  deleted with no loss of information, it wasn't content.
+- **Em-dash theatrics** — dashes staged for drama the content hasn't earned,
+  added *during* a rewrite rather than present in the source. This is
+  distinct from the open question below about what rate is acceptable in
+  general; this entry is only about a rewrite *adding* dashes that weren't
+  there to fix a different flaw.
 
 **The test for any edit:** did the information in the rewrite come from the
 source? Cutting filler, sharpening an existing claim, surfacing a buried
@@ -95,10 +124,13 @@ careful editor would raise regardless of who wrote the draft.
   it because it has to be checked against source, not against prose quality.
 
 **P1 — visible on a careful re-read**
-- **Thesis-first opener.** A personal or research narrative that leads with
-  the frame instead of the material: "The hardest part of this project was
-  X" before X has been shown. Start with the concrete situation; let the
-  thesis emerge, per the protocol's own core writing principle.
+- **Thesis-first opener** (narrative, letter, and artist-statement genres
+  only — see the genre-scope note above; a research pre-proposal's own genre
+  entry requires leading with the object and problem, which is not this
+  tell). A personal or research narrative that leads with the frame instead
+  of the material: "The hardest part of this project was X" before X has
+  been shown. Start with the concrete situation; let the thesis emerge, per
+  the protocol's own core writing principle.
 - **Chiasmus / mirrored-clause parallelism as decoration.** A reversed
   parallel construction staged to sound like insight ("being specific about
   being wrong is more useful than being vague about being right") when the
@@ -131,11 +163,28 @@ careful editor would raise regardless of who wrote the draft.
   weight regardless of whether the underlying content is actually that
   symmetric.
 
+## Open questions — do not flag these, and don't invent a threshold either
+
+**Em-dash rate.** The three external tools surveyed disagree by more than 3x
+(1 per 1,000 words, 1 per 500, 1 per 300 — see the survey file's cross-tool
+comparison table), and none of their calibration is grounded in Mozare's own
+prose rather than the blog/LinkedIn corpora those tools were built for. This
+harness has deliberately not adopted a number. If a specific rate ever gets
+decided (Mohammad's call), it goes here with its source; until then, don't
+flag em-dash *rate* as a structural tell at all, and don't reason your own
+way to a number in the meantime — a threshold that isn't written down here
+is a prior, not a finding, and reporting it as though it were a documented
+rule is worse than saying nothing. (Em-dash *theatrics* — a rewrite adding
+new dashes for drama — is a real, separate rule; see the editor-constraints
+section above.)
+
 ## How to use this file
 
 Run this as a distinct pass from the mechanical `rg` check in
-`banned-patterns.txt` — it needs judgment, not just pattern matching.
-`mozare-critic` applies this list as part of a genuinely separate read;
-`mozare-finalize` requires that pass to have happened before treating a
+`banned-hard.txt` / `banned-review.txt` — it needs judgment, not just pattern
+matching. `mozare-critic` applies this list as part of a genuinely separate
+read; `mozare-finalize` requires that pass to have happened before treating a
 draft as gate-checked. Don't apply any of it to quoted material, code, or
-another author's words (see the escape hatch above).
+another author's words (see the escape hatch above). If you find yourself
+applying a rule not written down in this file, that's your own prior, not
+the standard — name it as an open question rather than reporting it as a flaw.
