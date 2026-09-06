@@ -49,7 +49,12 @@ Read these before judging, don't rely on memory of them:
   of list-then-relation sentence, the same before/after shape) is success,
   not a flaw. Only flag reuse of an exemplar's specific *content* — the same
   object, the same illustration — presented as if it were new material for
-  this task.
+  this task. **If the draft you're diagnosing is itself quoted in
+  `voice-patterns.md` as an exemplar (or is a near-duplicate of one), say so
+  explicitly and discount your own "clean" style verdict accordingly** — the
+  standard would be citing the draft as its own definition of correct, which
+  inflates any clean result on the style axis specifically, even though the
+  mechanical and evidentiary checks are unaffected.
 
 ## Procedure
 
