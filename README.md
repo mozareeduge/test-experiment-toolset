@@ -76,6 +76,34 @@ If `mozare-wiki` is also cloned and reachable, the harness prefers reading
 its live canonical protocol objects over its own bundled snapshot
 (`protocol.md`) — but nothing here requires that repo to be present.
 
+### Other agent environments
+
+The Claude Code build above is the richest one (a real subagent with tool
+restrictions and platform-enforced context isolation for `mozare-critic`,
+and `disable-model-invocation` for `mozare-finalize`). Two more builds of
+the same harness exist for environments without those mechanisms — content
+and compositional standard are identical everywhere; only the
+isolation/manual-invocation guarantees differ, since a platform that has no
+subagent sandbox or no auto-triggering has to get those guarantees from
+explicit discipline instead:
+
+- **Codex** — `.agents/skills/mozare-write/`, `.agents/skills/mozare-critic/`,
+  `.agents/skills/mozare-finalize/`, invoked as `$mozare-write`,
+  `$mozare-critic`, `$mozare-finalize`. Matches this repo's existing
+  `.claude/skills/ss-*` → `.agents/skills/ss-*` convention for StyleSeed.
+  Install the same way as the Claude Code build above, copying to wherever
+  your Codex build reads `.agents/skills/` from (or to
+  `~/.codex/prompts/` per its file-based prompt convention).
+- **Hermes-family models, or any other standard agentic env** —
+  `portable/` is a single, self-contained, copy-and-go bundle
+  (`mozare-write.md`, `mozare-critic.md`, `mozare-finalize.md`, plus a
+  `shared/` directory of the same protocol/voice/tells/banned-word files)
+  written as plain system-prompt text with no vendor-specific frontmatter
+  or invocation syntax — for any harness that takes a system prompt or
+  tool/function description rather than discovering skills from a folder
+  convention. See `portable/README.md` for how to load it and what to do
+  if your harness has no file-reading tool.
+
 ### Design notes worth knowing before extending this
 
 - `banned-hard.txt` is always-replace; `banned-review.txt` is a prompt to
